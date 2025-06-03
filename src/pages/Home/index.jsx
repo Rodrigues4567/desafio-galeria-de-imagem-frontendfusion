@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react"
 import Header from "../../layout/Header"
+import ImageCard from "../../components/ImageCard"
+import Modal from "../../components/Modal"
 
 function Home() {
 
     const [api, setApi] = useState([])
+    const [selectedImage, setSelectedImage] = useState(null)
+    const [loading, setLoading] = useState(true)
 
     async function showApi() {
         try {
@@ -16,6 +20,9 @@ function Home() {
         catch(err) {
             console.log(err)
         }
+        finally {
+            setLoading(false)
+        }
     }
 
     useEffect(() => {
@@ -26,13 +33,21 @@ function Home() {
         <>
             <div>
                 <Header />
-                <div>
-                    {api.map((image) => (
-                        <div key={image.id}>
-                            <img className="h-[300px] w-[390px]" src={image.download_url} alt={`Foto de ${image.author}`} />
-                        </div>
-                    ))}
-                </div>
+                {loading ? (
+                    <div className="flex justify-center items-center h-[80vh]">
+                        <p className="text-xl font-semibold animate-pulse">Carregando imagens...</p>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center px-[17rem] desktop:px-[9rem] laptop:px-[5rem] mobile:px-[2rem]">
+                        {api.map((image) => (
+                            <ImageCard key={image.id} image={image} onClick={() => setSelectedImage(image)} />
+                        ))}
+                    </div>
+                )}
+
+                {selectedImage && (
+                    <Modal image={selectedImage} onClose={() => setSelectedImage(null)} />
+                )}
             </div>
         </>
     )

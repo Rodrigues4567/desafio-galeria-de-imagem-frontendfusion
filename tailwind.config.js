@@ -8,6 +8,11 @@ export default {
     extend: {
       fontFamily: {
         fontBold: ['font-bold', 'sans-serif']
+      },
+      screens: {
+        'desktop': { 'max': '1700px' },
+        'laptop': { 'max': '1280px' },
+        'mobile': { 'max': '560px' },
       }
     },
   },

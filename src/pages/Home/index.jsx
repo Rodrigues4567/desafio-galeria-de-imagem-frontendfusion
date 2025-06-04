@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Header from "../../layout/Header"
 import ImageCard from "../../components/ImageCard"
 import Modal from "../../components/Modal"
+import Footer from "../../layout/Footer"
 
 function Home() {
 
@@ -31,14 +32,14 @@ function Home() {
 
     return (
         <>
-            <div>
-                <Header />
+            <Header />
+            <div className="flex justify-center items-center mb-10">
                 {loading ? (
                     <div className="flex justify-center items-center h-[80vh]">
                         <p className="text-xl font-semibold animate-pulse">Carregando imagens...</p>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center px-[17rem] desktop:px-[9rem] laptop:px-[5rem] mobile:px-[2rem]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center justify-center items-center px-[4rem] w-[1280px] mobile:w-[90vw] mobile:px-[0rem]">
                         {api.map((image) => (
                             <ImageCard key={image.id} image={image} onClick={() => setSelectedImage(image)} />
                         ))}
@@ -49,6 +50,7 @@ function Home() {
                     <Modal image={selectedImage} onClose={() => setSelectedImage(null)} />
                 )}
             </div>
+            <Footer />
         </>
     )
 }

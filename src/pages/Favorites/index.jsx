@@ -13,9 +13,9 @@ function Favorites() {
     return (
         <>
             <Header />
-            <div className="min-h-screen flex items-center flex-col mb-10 text-center">
+            <div className="min-h-screen flex items-center flex-col mb-10">
 
-                <h2 className="text-2xl font-bold px-4 mb-6">Fotos marcadas como favoritas</h2>
+                <h2 className="text-2xl font-bold px-4 mb-6 text-center">Fotos marcadas como favoritas</h2>
 
                 {favorites.length === 0 ? (
                     <p className="text-center mt-10">Nenhuma imagem favoritada ainda.</p>

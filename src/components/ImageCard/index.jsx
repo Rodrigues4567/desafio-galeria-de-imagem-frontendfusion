@@ -18,7 +18,7 @@ function ImageCard({ image, onClick }) {
                         e.stopPropagation()
                         toggleFavorite(image)
                     }}
-                    className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition"
+                    className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md opacity-85"
                 >
                     <FaHeart className={`text-xl ${isFavorited ? 'text-red-500' : 'text-gray-400'}`} />
                 </button>
